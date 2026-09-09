@@ -2,6 +2,8 @@
 
 Forge is a high-performance build system written in C++17. It automates building C/C++ projects with dynamic header dependency discovery, cycle detection, incremental rebuilds, and parallel task execution.
 
+GitHub Repository: [https://github.com/Shanit-Singhal/Forge-Build-System](https://github.com/Shanit-Singhal/Forge-Build-System)
+
 ---
 
 ## Building Forge
@@ -14,42 +16,32 @@ cmake -S . -B build
 cmake --build build
 ```
 
-### Optional: Running Forge Globally
-If you would like to run `forge` directly from any folder without specifying the path, add its build directory to your PATH or copy it to `/usr/local/bin`:
+### Step 1: Install the forge CLI executable on your system PATH (One-time setup)
+
+To let Forge run from any folder, copy the `forge` binary to `/usr/local/bin`:
 
 ```bash
-sudo cp /Users/shanitsinghal/Desktop/Forge/build/forge /usr/local/bin/
+sudo cp build/forge /usr/local/bin/
 ```
-Then you can simply type `forge build`, `forge clean`, or `forge graph` in any project folder containing a `forge.conf` file!
+(Now `forge` is accessible globally from any terminal directory).
 
----
+### Step 2: Add a `forge.conf` to ANY C++ project directory
 
-## How to Use Forge
-
-### 1. Create a `forge.conf` in your C++ project root
-
-To use Forge with any C++ project, create a configuration file named `forge.conf` in your project's root directory:
+In any external project folder (e.g. `~/Desktop/my_cpp_project`), create a file named `forge.conf`:
 
 ```ini
-# Compiler binary
 compiler = clang++
-
-# Compiler flags
-flags = -std=c++17 -Wall -O2
-
-# Space-separated list of source files
-sources = src/main.cpp src/math.cpp src/utils.cpp
-
-# Space-separated list of include directories
+flags = -std=c++17 -Wall
+sources = src/main.cpp src/math.cpp
 includes = include
-
-# Target output executable path
 output = build/my_program
 ```
 
 ---
 
-### 2. Available Commands
+## How to Use Forge
+
+### Available Commands
 
 #### Build Project (`forge build`)
 Compiles out-of-date source files and links the final executable:
@@ -116,22 +108,6 @@ cd /Users/shanitsinghal/Desktop/Forge/vscode-extension
 npx @vscode/vsce login ShanitSinghal
 npx @vscode/vsce publish
 ```
-
-### 3. Useful Commands for Future Updates
-When you make changes or add features to your extension in the future:
-
-- **Publish a minor update / bug fix (v0.0.2)**:
-  ```bash
-  npx @vscode/vsce publish patch
-  ```
-- **Publish a feature update (v0.1.0)**:
-  ```bash
-  npx @vscode/vsce publish minor
-  ```
-- **Publish a major release (v1.0.0)**:
-  ```bash
-  npx @vscode/vsce publish major
-  ```
 
 ---
 

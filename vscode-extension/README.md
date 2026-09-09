@@ -2,6 +2,34 @@
 
 Official VS Code extension for **Forge** - a high-performance C++ dependency-aware mini build system.
 
+GitHub Repository: [https://github.com/Shanit-Singhal/Forge-Build-System](https://github.com/Shanit-Singhal/Forge-Build-System)
+
+---
+
+## How to Use This Extension in Any C++ Project
+
+### Step 1: Install Forge CLI Binary (One-Time Setup)
+To let Forge run from any folder, copy the `forge` binary executable to `/usr/local/bin`:
+```bash
+sudo cp build/forge /usr/local/bin/
+```
+*(Now `forge` is accessible globally from any terminal directory).*
+
+### Step 2: Add a `forge.conf` to Your C++ Project Root
+In any external project folder (e.g. `~/Desktop/my_cpp_project`), create a file named `forge.conf`:
+```ini
+compiler = clang++
+flags = -std=c++17 -Wall
+sources = src/main.cpp src/math.cpp
+includes = include
+output = build/my_program
+```
+
+### Step 3: Run Extension Commands inside VS Code
+Open your project folder in VS Code. The extension automatically detects `forge.conf`. You can now:
+- Click **`[⚙️ Forge: Build]`** or **`[📊 Forge: Graph]`** on the bottom status bar.
+- Open Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`) and type `Forge: Build Project`.
+
 ---
 
 ## Features
@@ -11,7 +39,6 @@ Official VS Code extension for **Forge** - a high-performance C++ dependency-awa
 - **Clean Artifacts**: Quickly remove compiled `.o` object files and target executables (`forge clean`).
 - **Dependency Graph Tree**: Visualize your C++ project `#include` dependency graph as an ASCII tree (`forge graph`).
 - **Status Bar Integration**: Convenient quick-action status bar buttons (`⚙️ Forge: Build` and `📊 Forge: Graph`).
-- **Auto-Detection**: Automatically detects workspaces containing `forge.conf`.
 
 ---
 
@@ -25,23 +52,3 @@ Access these commands from the Command Palette (`Ctrl+Shift+P` / `Cmd+Shift+P`):
 | `forge.buildParallel` | **Forge: Build Parallel (-j)** | Prompts for thread count and executes parallel task compilation. |
 | `forge.clean` | **Forge: Clean Artifacts** | Cleans build directory and output binaries. |
 | `forge.graph` | **Forge: Show Dependency Graph** | Displays ASCII dependency tree of source files and headers. |
-
----
-
-## Prerequisites
-
-Ensure the `forge` build executable is available on your system PATH (e.g. `/usr/local/bin/forge`) or located inside your workspace's `./build/forge` directory.
-
----
-
-## Sample `forge.conf` Project Setup
-
-Create a `forge.conf` file in your workspace root:
-
-```ini
-compiler = clang++
-flags = -std=c++17 -Wall -O2
-sources = src/main.cpp src/math.cpp src/utils.cpp
-includes = include
-output = build/my_program
-```

@@ -2,7 +2,7 @@
   "name": "forge-build-system",
   "displayName": "Forge Build System",
   "description": "Integration and controls for Forge - mini C++ dependency-aware build system",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "publisher": "ShanitSinghal",
   "icon": "icon.png",
   "license": "MIT",
