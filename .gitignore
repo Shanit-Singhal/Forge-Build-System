@@ -1,0 +1,11 @@
+build/
+*.o
+*.a
+*.so
+*.dylib
+vscode-extension/node_modules/
+vscode-extension/out/
+vscode-extension/*.vsix
+.DS_Store
+.vscode/
+.idea/

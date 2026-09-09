@@ -1,0 +1,74 @@
+{
+  "name": "forge-build-system",
+  "displayName": "Forge Build System",
+  "description": "Integration and controls for Forge - mini C++ dependency-aware build system",
+  "version": "0.0.3",
+  "publisher": "ShanitSinghal",
+  "icon": "icon.png",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shanitsinghal/Forge"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:forge.conf"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "forge.build",
+        "title": "Forge: Build Project",
+        "category": "Forge"
+      },
+      {
+        "command": "forge.buildParallel",
+        "title": "Forge: Build Parallel (-j)",
+        "category": "Forge"
+      },
+      {
+        "command": "forge.clean",
+        "title": "Forge: Clean Artifacts",
+        "category": "Forge"
+      },
+      {
+        "command": "forge.graph",
+        "title": "Forge: Show Dependency Graph",
+        "category": "Forge"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "forge.build"
+        },
+        {
+          "command": "forge.buildParallel"
+        },
+        {
+          "command": "forge.clean"
+        },
+        {
+          "command": "forge.graph"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "typescript": "^5.0.0"
+  }
+}
